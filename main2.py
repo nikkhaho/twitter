@@ -29,7 +29,7 @@ class Consumer(threading.Thread):
               elastic=elastic_search.save_to_elastic(twjson,tweetid)
               listhash=(twjson['hashtags'])
               list_id=(twjson['ids'])
-              producer = KafkaProducer(bootstrap_servers='192.168.43.50:9092')
+              producer = KafkaProducer(bootstrap_servers='localhost:9092')
               for hashtags in listhash:
                 producer.send('q1',hashtags.encode("utf-8"))
                 # print(hashtags)
@@ -59,7 +59,7 @@ class Producer(threading.Thread):
               elastic=elastic_search.save_to_elastic(twjson1,tweetid1)
               listhash1=(twjson1['hashtags'])
               list_id1=(twjson1['ids'])
-              producer = KafkaProducer(bootstrap_servers='192.168.43.50:9092')
+              producer = KafkaProducer(bootstrap_servers='localhost:9092')
               for hashtags in listhash1:
                 producer.send('q1',hashtags.encode("utf-8"))
                 # print(hashtags)
